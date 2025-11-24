@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watu Credit</title>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* BODY */
+body {
+    background: #e5e5e5;
+}
+
+/* HEADER */
+header {
+    background: #2c2c2c;
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* SIDEBAR BUTTON */
+.sidebar-btn {
+    background: #444;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+.sidebar-btn:hover {
+    background: #555;
+}
+
+/* LOGO */
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: teal;
+}
+
+/* SIDEBAR - FULL HEIGHT */
+.dropdown-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    width: 260px;
+    background: #333;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    transition: 0.3s ease;
+    padding-top: 10px;
+    z-index: 2000;
+}
+.dropdown-menu.hidden {
+    transform: translateX(-300px);
+    opacity: 0;
+}
+.dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+.dropdown-menu a:hover {
+    background: teal;
+    padding-left: 30px;
+}
+
+/* MAIN AREA */
+main {
+    padding: 120px 30px 30px 30px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    text-align: center;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.product-card h4 {
+    margin-top: 12px;
+    font-size: 18px;
+}
+.product-card p {
+    margin-top: 5px;
+    color: #333;
+}
+.product-card button {
+    margin-top: 12px;
+    padding: 10px 15px;
+    background: teal;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.product-card button:hover {
+    background: #006666;
+}
+
+/* FOOTER */
+footer {
+    background: #1e1e1e;
+    color: white;
+    padding: 40px 25px;
+    margin-top: 40px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #444;
+}
+
+.footer-columns h4 {
+    color: teal;
+    margin-bottom: 12px;
+}
+
+.footer-columns p,
+.footer-columns a {
+    color: #ccc;
+    font-size: 15px;
+    text-decoration: none;
+    line-height: 26px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    color: #bbb;
+}
+.footer-bottom i {
+    color: teal;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <button class="sidebar-btn" id="menuBtn"><i class='bx bx-menu'></i></button>
+    <div class="logo">Watu Credit</div>
+</header>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="dropdown-menu hidden">
+    <a href="#"><i class='bx bx-mobile'></i> Smartphones</a>
+    <a href="#"><i class='bx bx-phone'></i> Feature Phones</a>
+    <a href="#"><i class='bx bx-headphone'></i> Accessories</a>
+    <a href="#"><i class='bx bx-star'></i> New Arrivals</a>
+    <a href="#"><i class='bx bx-hot'></i> Best Sellers</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+    <h2>Available Phones</h2>
+
+    <div class="products">
+        <div class="product-card">
+            <img src="images/oppoA6.webp" alt="Oppo A6">
+            <h4>Oppo A6</h4>
+            <p>Ksh 17,000</p>
+            <button onclick="buyNow('Oppo A6')">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/oppoA3x.webp" alt="Oppo A3x">
+            <h4>Oppo A3x</h4>
+            <p>Ksh 16,000</p>
+            <button onclick="buyNow('Oppo A3x')">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://fdn2.gsmarena.com/vv/bigpic/tecno-spark-10c.jpg" alt="Tecno Spark 10 Pro">
+            <h4>Tecno Spark 10 Pro</h4>
+            <p>Ksh 19,999</p>
+            <button onclick="buyNow('Tecno Spark 10 Pro')">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://fdn2.gsmarena.com/vv/bigpic/oppo-a58-4g.jpg" alt="Oppo A58">
+            <h4>Oppo A58</h4>
+            <p>Ksh 27,999</p>
+            <button onclick="buyNow('Oppo A58')">Buy Now</button>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-columns">
+        <div>
+            <h4>Watu Credit</h4>
+            <p>Your trusted partner in device financing. Affordable payments, quality smartphones.</p>
+        </div>
+
+        <div>
+            <h4>Contact Us</h4>
+            <p><i class='bx bx-phone'></i> 0780605266</p>
+            <p>
+                <a href="https://wa.me/254780605266" target="_blank" style="color: #25D366;">
+                    <i class='bx bxl-whatsapp'></i> Chat on WhatsApp
+                </a>
+            </p>
+            <p><i class='bx bx-envelope'></i> info@watucredit.com</p>
+            <p><i class='bx bx-map'></i> Nairobi, Kenya</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="#">About Us</a><br>
+            <a href="#">Support</a><br>
+            <a href="#">Privacy Policy</a><br>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Watu Credit — All Rights Reserved  
+        <br><i class='bx bx-heart'></i> Built with care
+    </div>
+</footer>
+
+<script>
+const btn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+
+btn.addEventListener("click", () => {
+    sidebar.classList.toggle("hidden");
+});
+
+// Function to open WhatsApp with prefilled message
+function buyNow(productName) {
+    const phone = '254780605266'; // Kenya phone number without leading zero
+    const message = encodeURIComponent(`Hello, I want to buy ${productName}`);
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+}
+</script>
+
+</body>
+</html>
